@@ -1,0 +1,23 @@
+ERRORES COMETIDOS DURANTE ESTE TRABAJO:
+
+1- Mala limitación de caracteres en la base de datos para generar una password hasheada
+
+2- Redireccionamiento erróneos debido a nombres de archivos mal escritos
+
+3- mala definición en cuanto a nombres de los datos enviados del formulario
+
+4- Se generó una nueva columna en la base de datos la cual se enviaba la contraseña hasheada y sin hashear.
+Lo que generaba un error a la hora de utilizar "password_verify". Se tiene que enviar solo la contraseña 
+hasheada.
+
+5- Instalación incorrecta del "composer". Se instaló el composer de Python en vez del de PHP. Además de no
+contar con el composer instalado en el equipo. 
+
+6- (ERROR MÁS IMPORTANTE) Mala colocación del link para poder iniciar sesión con Google. Este error me tomó
+10 horas (contadas a reloj), incluso más, para poder encontrar una solución.
+Después de mucho buscar e indagar por internet e incluso hablar con la inteligencia artificial por días,
+La explicación fue que el link solo era válido en archivos .php, ya que html no interpreta php. 
+Si se establece en un archivo .html, no lo marcará con un error, pero una vez que tu le quieras dár a inciar 
+sesión con google, va a mostrar en pantalla el error 403 (el famoso forbidden).
+SOLUCIÓN: Hagan una página web dentro de un archivo .php y pongan "<a href="<?php echo $client->createAuthUrl() ?>">Iniciar Sesión Con Google</a>".
+Si esta línea se pone en un html se mostrará en pantalla como que no conoce ese link
